@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Home from "./app/pages/Home";
 
 function App() {
   return (
     <div className="App">
-      App
+      <Home/>
     </div>
   );
 }

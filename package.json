@@ -28,7 +28,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "schema:download": "npx apollo service:download --endpoint=https://rickandmortyapi.com/graphql ./src/app/graphql/graphql-schema.json"
+    "schema:download": "npx apollo service:download --endpoint=https://rickandmortyapi.com/graphql ./src/app/graphql/graphql-schema.json",
+    "schema:generate-watch": "npx apollo codegen:generate --localSchemaFile=./src/app/graphql/graphql-schema.json --target=typescript --tagName=gql"
   },
   "resolutions": {
     "graphql": "^15.5.0"
