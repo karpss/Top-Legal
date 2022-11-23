@@ -26,6 +26,10 @@ export interface FetchCharactersList_characters_results_location {
 export interface FetchCharactersList_characters_results {
   __typename: "Character";
   /**
+   * The id of the character.
+   */
+  id: string | null;
+  /**
    * The name of the character.
    */
   name: string | null;

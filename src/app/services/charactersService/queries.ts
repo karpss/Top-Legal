@@ -8,6 +8,7 @@ query FetchCharactersList($page: Int!) {
       count
     }
     results {
+      id
       name
       image
       status

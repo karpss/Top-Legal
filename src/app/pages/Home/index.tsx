@@ -5,10 +5,22 @@ import {useAppDispatch} from "../../hooks"
 import { Dispatch } from 'redux';
 import { FetchCharactersList } from '../../services/charactersService/__generated__/FetchCharactersList';
 import { setCharactersList } from './homeSlice';
+import CardDetails from '../../components/CardDetails';
+
+
+const actionDispatch = (dispatch: Dispatch) => ({
+  setCharactersList: (page: FetchCharactersList["characters"]) => dispatch(setCharactersList(page)), 
+});
+
+
+
+
+
+
 
 const Home = () => {
 
-
+  const {setCharactersList} = actionDispatch(useAppDispatch()); 
 
   useEffect(()=> {
     fetchCharacters();
@@ -19,16 +31,16 @@ const Home = () => {
       const charactersList = await charactersService.fetchCharactersList(0).catch((err) => {
         console.log(err);
       });
-      console.log("Characters List", charactersList);
-      // if (charactersList){
-      //   setCharactersList(charactersList);
+      // console.log("Characters List", charactersList);
+      if (charactersList){
+        setCharactersList(charactersList);
       
-      // }
+      }
       };
 
   return (
     <>
-    <h2>Rick and Morty</h2>
+    <CardDetails/>
     </>
   )
 }
