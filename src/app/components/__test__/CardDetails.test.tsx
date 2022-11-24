@@ -1,14 +1,14 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import App from "./App";
+import { store } from "../../store";
+import CardDetails from "..";
 
-describe("App Component", () => {
-  it("should render app component", () => {
+describe("Card Details Component", () => {
+  it("should render CardDetails component", () => {
     const { container } = render(
       <Provider store={store}>
-        <App />
+        <CardDetails />
       </Provider>,
     );
     expect(container).toMatchSnapshot();

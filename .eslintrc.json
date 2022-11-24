@@ -29,7 +29,7 @@
     ],
     
     "rules": {
-        "typescript-eslint/explicit-function-return-type": "off"
+        "import/prefer-default-export": 0
 
 
     }

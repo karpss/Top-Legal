@@ -1,25 +1,20 @@
-/* eslint-disable */
-
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { IHomeState } from "./types";
 
 const initialState: IHomeState = {
-    
-   charactersList: null
-}
+  charactersList: null,
+};
 
 const HomeSlice = createSlice({
-    name: "home",
-    initialState,
-    reducers: {
-        setCharactersList(state, action){
-            state.charactersList = action.payload
-        }  
-    }
-    
+  name: "home",
+  initialState,
+  reducers: {
+    setCharactersList(state, action) {
+      const ref = state;
+      ref.charactersList = action.payload;
+    },
+  },
 });
 
-
-
-export const {setCharactersList} = HomeSlice.actions;// RTK creates actions with type and payload based on the reducers created in slice
+export const { setCharactersList } = HomeSlice.actions;
 export default HomeSlice.reducer;

@@ -1,14 +1,14 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import App from "./App";
+import { store } from "../../../store";
+import Home from "../index";
 
-describe("App Component", () => {
-  it("should render app component", () => {
+describe("Home Component", () => {
+  it("should render home component", () => {
     const { container } = render(
       <Provider store={store}>
-        <App />
+        <Home />
       </Provider>,
     );
     expect(container).toMatchSnapshot();

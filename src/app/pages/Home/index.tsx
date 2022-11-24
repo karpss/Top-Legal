@@ -1,48 +1,40 @@
-/* eslint-disable */
-import React, {useEffect} from 'react'
-import charactersService from '../../services/charactersService';
-import {useAppDispatch} from "../../hooks"
-import { Dispatch } from 'redux';
-import { FetchCharactersList } from '../../services/charactersService/__generated__/FetchCharactersList';
-import { setCharactersList } from './homeSlice';
-import CardDetails from '../../components/CardDetails';
-
+import React, { useCallback, useEffect } from "react";
+import { Dispatch } from "redux";
+import charactersService from "../../services/charactersService";
+import { useAppDispatch } from "../../hooks";
+import { FetchCharactersList } from "../../services/charactersService/__generated__/FetchCharactersList";
+import { setCharactersList } from "./homeSlice";
+import CardDetails from "../../components";
 
 const actionDispatch = (dispatch: Dispatch) => ({
-  setCharactersList: (page: FetchCharactersList["characters"]) => dispatch(setCharactersList(page)), 
+  setCharactersList: (page: FetchCharactersList["characters"]) =>
+    dispatch(setCharactersList(page)),
 });
 
+function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const { setCharactersList } = actionDispatch(useAppDispatch());
 
-
-
-
-
-
-const Home = () => {
-
-  const {setCharactersList} = actionDispatch(useAppDispatch()); 
-
-  useEffect(()=> {
-    fetchCharacters();
-    },[]);
-
-    const fetchCharacters = async () => {
-  
-      const charactersList = await charactersService.fetchCharactersList(0).catch((err) => {
-        console.log(err);
+  const fetchCharacters = useCallback(async () => {
+    const charactersList = await charactersService
+      .fetchCharactersList(0)
+      .catch((err) => {
+        return err;
       });
-      // console.log("Characters List", charactersList);
-      if (charactersList){
-        setCharactersList(charactersList);
-      
-      }
-      };
+    if (charactersList) {
+      setCharactersList(charactersList);
+    }
+  }, [setCharactersList]);
+
+  useEffect(() => {
+    fetchCharacters();
+  }, [fetchCharacters]);
 
   return (
-    <>
-    <CardDetails/>
-    </>
-  )
+    <div>
+      <CardDetails />
+    </div>
+  );
 }
 
-export default Home
+export default Home;
