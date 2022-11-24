@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const stateSelector = createSelector(makeSelectCharactersList, (charactersList) => ({charactersList}) )
 
@@ -17,7 +19,9 @@ const CardDetails = () => {
   return (
     <>
     {!charactersList ? (
-        <div>Loading...</div>
+       <Box sx={{ width: '100%' }}>
+       <LinearProgress />
+     </Box>
       ) : (
         <Grid container spacing={3} >
         {charactersList?.results?.map((xter) =>(
