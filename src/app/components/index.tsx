@@ -28,32 +28,32 @@ function CardDetails() {
         </Box>
       ) : (
         <Grid container spacing={3}>
-          {charactersList?.results?.map((xter) => (
-            <Grid md={2.4} lg={2} item xs={3} key={xter?.id}>
+          {charactersList?.results?.map((char) => (
+            <Grid md={2.4} lg={2} item xs={3} key={char?.id}>
               <Card sx={{ maxWidth: 345 }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
                     height="140"
-                    image={xter?.image || ""}
-                    alt={xter?.name || ""}
+                    image={char?.image || ""}
+                    alt={char?.name || ""}
                   />
 
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      {xter?.name}
+                      {char?.name}
                     </Typography>
 
                     <Typography variant="body2" color="text.secondary">
-                      Status: {xter?.status}
+                      Status: {char?.status}
                     </Typography>
 
                     <Typography variant="body2" color="text.secondary">
-                      Gender: {xter?.gender}
+                      Gender: {char?.gender}
                     </Typography>
 
                     <Typography variant="body2" color="text.secondary">
-                      Location: {xter?.location?.name}
+                      Location: {char?.location?.name}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
